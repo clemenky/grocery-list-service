@@ -1,0 +1,108 @@
+{
+  "lists": [
+    {
+      "id": "11c3ef7a-45f3-4652-aa8f-1db3e93a3384",
+      "name": "Test List",
+      "date_created": "2025-05-17T10:30:06.394Z",
+      "date_updated": "2025-05-17T17:33:33.753Z",
+      "items": [
+        {
+          "id": "072d3f25-4e7c-4cae-9658-55f2c3b66e97",
+          "name": "Cashews",
+          "quantity": 1,
+          "category": "c",
+          "position": 1,
+          "checked": true
+        },
+        {
+          "id": "663e23c6-300f-47b5-ad69-b7d8d9fde81f",
+          "name": "Bananas",
+          "quantity": 6,
+          "category": "a",
+          "position": 2,
+          "checked": false
+        },
+        {
+          "id": "efc9dfdd-5bdf-43b9-ae72-4264895b5fe7",
+          "name": "Bread",
+          "quantity": 4,
+          "category": "b",
+          "position": 3,
+          "checked": false
+        },
+        {
+          "id": "a815e767-6d27-4a42-b8e0-502dea6ed91a",
+          "name": "Broc",
+          "quantity": 20,
+          "category": "",
+          "position": 4,
+          "checked": false
+        },
+        {
+          "id": "6f01601d-069d-496a-bcd6-9b41bdee71e5",
+          "name": "Quinoa",
+          "quantity": 5,
+          "category": "",
+          "position": 5,
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "d7c19d7d-e3d0-4d97-8223-92a9bc11164b",
+      "name": "List 2",
+      "date_created": "2025-05-17T17:16:10.450Z",
+      "date_updated": "2025-05-17T17:17:52.820Z",
+      "items": [
+        {
+          "id": "d505a6e1-0c3d-454a-b6a0-f0db7a0685dd",
+          "name": "Nuts",
+          "quantity": 1,
+          "category": "",
+          "position": 1,
+          "checked": false
+        },
+        {
+          "id": "9a44118c-045d-487d-95da-4394c357662d",
+          "name": "Flowers",
+          "quantity": 1,
+          "category": "",
+          "position": 2,
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "41048261-802e-429d-9594-6970fdbe2fb7",
+      "name": "List 3",
+      "date_created": "2025-05-17T17:16:35.766Z",
+      "date_updated": "2025-05-17T17:18:25.654Z",
+      "items": [
+        {
+          "id": "6ec00b32-c933-457d-baef-6316b554fa3c",
+          "name": "Tofu",
+          "quantity": 1,
+          "category": "",
+          "position": 1,
+          "checked": false
+        },
+        {
+          "id": "fb9c8092-a038-4557-a3eb-118526798482",
+          "name": "Rice",
+          "quantity": 1,
+          "category": "",
+          "position": 2,
+          "checked": false
+        },
+        {
+          "id": "2204bc6b-aa6f-41ce-91d5-a1e64fd9bc6e",
+          "name": "Strawberries",
+          "quantity": 1,
+          "category": "",
+          "position": 3,
+          "checked": false
+        }
+      ]
+    }
+  ]
+}
