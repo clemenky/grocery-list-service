@@ -38,14 +38,14 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
         "name": "Weekly Groceries",
         "date_created": "2025-05-17T10:30:06.394Z",
         "date_updated": "2025-05-17T17:33:33.753Z",
-        "items": [ /* ... */ ]
+        "items": [ ... ]
       },
       {
         "id": "f9e8d7c6-b5a4-3210-fedc-ba9876543210",
         "name": "Party Snacks",
         "date_created": "2025-05-16T15:00:00.000Z",
         "date_updated": "2025-05-16T15:15:15.000Z",
-        "items": [ /* ... */ ]
+        "items": [ ... ]
       }
     ]
     ```
