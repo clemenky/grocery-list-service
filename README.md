@@ -268,3 +268,7 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
       "checked": false
     }
     ```
+
+### UML Diagram
+
+![UML diagram of add item to grocery list feature](uml-diagram.png)
