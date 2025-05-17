@@ -27,12 +27,10 @@ function saveGroceryListsData(data) {
 
 // Utilities for sorting
 const sorters = {
-  // For getGroceryLists()
-  date_created: (a, b) => new Date(a.date_created) - new Date(b.date_created),
-  name: (a, b) => a.name.localeCompare(b.name),
-  item_count: (a, b) => a.items.length - b.items.length,
-  // For getGroceryList()
-  category: (a, b) => {
+  name: (a, b) => a.name.localeCompare(b.name),                                // for getGroceryLists and getGroceryList
+  date_created: (a, b) => new Date(a.date_created) - new Date(b.date_created), // for getGroceryLists
+  item_count: (a, b) => a.items.length - b.items.length,                       // for getGroceryLists
+  category: (a, b) => {                                                        // for getGroceryList
     const aEmpty = !a.category || a.category.trim() === '';
     const bEmpty = !b.category || b.category.trim() === '';
 
@@ -43,7 +41,7 @@ const sorters = {
     // Both empty or both non-empty, sort alphabetically
     return (a.category || '').localeCompare(b.category || '');
   },
-  position: (a, b) => (a.position || 0) - (b.position || 0)
+  position: (a, b) => (a.position || 0) - (b.position || 0)                    // for getGroceryList
 };
 
 

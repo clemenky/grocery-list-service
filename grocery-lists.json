@@ -4,22 +4,14 @@
       "id": "11c3ef7a-45f3-4652-aa8f-1db3e93a3384",
       "name": "Test List",
       "date_created": "2025-05-17T10:30:06.394Z",
-      "date_updated": "2025-05-17T17:33:33.753Z",
+      "date_updated": "2025-05-17T20:05:49.501Z",
       "items": [
-        {
-          "id": "072d3f25-4e7c-4cae-9658-55f2c3b66e97",
-          "name": "Cashews",
-          "quantity": 1,
-          "category": "c",
-          "position": 1,
-          "checked": true
-        },
         {
           "id": "663e23c6-300f-47b5-ad69-b7d8d9fde81f",
           "name": "Bananas",
           "quantity": 6,
           "category": "a",
-          "position": 2,
+          "position": 1,
           "checked": false
         },
         {
@@ -27,8 +19,16 @@
           "name": "Bread",
           "quantity": 4,
           "category": "b",
-          "position": 3,
+          "position": 2,
           "checked": false
+        },
+        {
+          "id": "072d3f25-4e7c-4cae-9658-55f2c3b66e97",
+          "name": "Cashews",
+          "quantity": 1,
+          "category": "c",
+          "position": 3,
+          "checked": true
         },
         {
           "id": "a815e767-6d27-4a42-b8e0-502dea6ed91a",
@@ -37,14 +37,6 @@
           "category": "",
           "position": 4,
           "checked": false
-        },
-        {
-          "id": "6f01601d-069d-496a-bcd6-9b41bdee71e5",
-          "name": "Quinoa",
-          "quantity": 5,
-          "category": "",
-          "position": 5,
-          "checked": false
         }
       ]
     },
@@ -52,7 +44,7 @@
       "id": "d7c19d7d-e3d0-4d97-8223-92a9bc11164b",
       "name": "List 2",
       "date_created": "2025-05-17T17:16:10.450Z",
-      "date_updated": "2025-05-17T17:17:52.820Z",
+      "date_updated": "2025-05-17T20:02:26.477Z",
       "items": [
         {
           "id": "d505a6e1-0c3d-454a-b6a0-f0db7a0685dd",
@@ -68,6 +60,14 @@
           "quantity": 1,
           "category": "",
           "position": 2,
+          "checked": false
+        },
+        {
+          "id": "0a0e0eac-672a-42a3-b6ab-1d7ac3454cea",
+          "name": "Strawberries",
+          "quantity": 1,
+          "category": "Fruit",
+          "position": 3,
           "checked": false
         }
       ]
