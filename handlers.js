@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 let groceryListsData = loadGroceryListsData();
 
+
+// GET /grocery-lists  ?sort_by=<sort_by> & sort_order=<sort_order>
 function getGroceryLists(req, res) {
   const sortBy = req.query.sort_by || 'date_created';
   const sortOrder = req.query.sort_order || 'desc';
@@ -20,6 +22,8 @@ function getGroceryLists(req, res) {
   res.json(sortedLists);
 }
 
+
+// GET /grocery-lists/<list_id>  ?include_checked=<include_checked> & sort_items_by=<sort_items_by>
 function getGroceryList(req, res) {
   const { list_id } = req.params;
   const includeChecked = req.query.include_checked !== 'false';
@@ -37,6 +41,8 @@ function getGroceryList(req, res) {
   res.json({ ...list, items });
 }
 
+
+// POST /grocery-lists   body: { name }
 function addGroceryList(req, res) {
   const { name } = req.body;
   if (!name) return res.status(400).json({ error: 'Name is required' });
@@ -56,6 +62,8 @@ function addGroceryList(req, res) {
   res.status(201).json(newList);
 }
 
+
+// DELETE /grocery-lists/<list_id>
 function deleteGroceryList(req, res) {
   const { list_id } = req.params;
   const listIndex = groceryListsData.lists.findIndex((list) => list.id === list_id);
@@ -66,6 +74,8 @@ function deleteGroceryList(req, res) {
   res.status(200).send(deletedList);
 }
 
+
+// POST /grocery-lists/<list_id>/items   body: { name, quantity, category }
 function addItem(req, res) {
   const { list_id } = req.params;
   const { name, quantity, category } = req.body;
@@ -75,6 +85,7 @@ function addItem(req, res) {
   const list = groceryListsData.lists.find((list) => list.id === list_id);
   if (!list) return res.status(404).json({ error: 'List not found' });
 
+  // Check for name conflict before adding the item
   if (list.items.some(item => item.name === name)) {
     return res.status(409).json({ error: `Item with name '${name}' already exists in the list` });
   }
@@ -94,6 +105,8 @@ function addItem(req, res) {
   res.status(201).json(newItem);
 }
 
+
+// PUT /grocery-lists/<list_id>/items/<item_id>   body: { name, quantity, category, position, checked }
 function updateItem(req, res) {
   const { list_id, item_id } = req.params;
   const updates = req.body;
@@ -104,10 +117,12 @@ function updateItem(req, res) {
   const item = list.items.find((item) => item.id === item_id);
   if (!item) return res.status(404).json({ error: 'Item not found' });
 
+  // Check for name conflict if updating the name
   if (updates.name !== undefined && list.items.some(i => i.name === updates.name && i.id !== item_id)) {
     return res.status(409).json({ error: `Item with name '${updates.name}' already exists in the list` });
   }
 
+  // Update item fields included in body
   const itemProperties = ['name', 'quantity', 'category', 'position', 'checked'];
   Object.keys(updates).forEach((key) => {
     if (itemProperties.includes(key)) {
@@ -115,11 +130,13 @@ function updateItem(req, res) {
     }
   });
 
+  // Handle position adjustment if changed
   if (updates.position !== undefined) {
     list.items = list.items
       .filter(item => item.id !== item_id)
       .sort((a, b) => (a.position || 0) - (b.position || 0));
     list.items.splice(updates.position - 1, 0, item);
+    // Recalculate all positions
     list.items.forEach((item, itemIndex) => item.position = itemIndex + 1);
   }
 
@@ -128,6 +145,8 @@ function updateItem(req, res) {
   res.json(item);
 }
 
+
+// DELETE /grocery-lists/<list_id>/items/<item_id>
 function deleteItem(req, res) {
   const { list_id, item_id } = req.params;
 
@@ -139,6 +158,7 @@ function deleteItem(req, res) {
 
   const [deletedItem] = list.items.splice(itemIndex, 1);
 
+  // Recalculate positions after deletion
   list.items.forEach((item, itemIndex) => item.position = itemIndex + 1);
 
   list.date_updated = getDate();

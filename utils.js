@@ -7,6 +7,8 @@ const __dirname = path.dirname(__filename);
 
 const DATA_FILE = path.join(__dirname, 'grocery-lists.json');
 
+
+// Load data from JSON file on startup
 function loadGroceryListsData() {
   try {
     const groceryListsData = fs.readFileSync(DATA_FILE, 'utf-8');
@@ -16,10 +18,14 @@ function loadGroceryListsData() {
   }
 }
 
+
+// Save data to JSON file
 function saveGroceryListsData(data) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2))
 }
 
+
+// Utilities for sorting
 const sorters = {
   // For getGroceryLists()
   date_created: (a, b) => new Date(a.date_created) - new Date(b.date_created),
@@ -30,8 +36,9 @@ const sorters = {
     const aEmpty = !a.category || a.category.trim() === '';
     const bEmpty = !b.category || b.category.trim() === '';
 
-    if (aEmpty && !bEmpty) return 1;    // a is empty, b is not → a goes *after* b
-    if (!aEmpty && bEmpty) return -1;   // a is not empty, b is empty → a goes *before* b
+    // Empty category goes after non-empty category
+    if (aEmpty && !bEmpty) return 1;
+    if (!aEmpty && bEmpty) return -1;
 
     // Both empty or both non-empty, sort alphabetically
     return (a.category || '').localeCompare(b.category || '');
@@ -39,12 +46,14 @@ const sorters = {
   position: (a, b) => (a.position || 0) - (b.position || 0)
 };
 
+
 function sortArray(arr, sortBy, sortOrder = 'desc') {
   if (!sorters[sortBy]) return arr;
   arr.sort(sorters[sortBy]);
   if (sortOrder === 'desc') arr.reverse();
   return arr;
 }
+
 
 function getDate() {
   return new Date().toISOString();
