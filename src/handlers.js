@@ -10,6 +10,8 @@ function getGroceryLists(req, res) {
   const sortBy = req.query.sort_by || 'date_created';
   const sortOrder = req.query.sort_order || 'desc';
 
+  console.log(`[GET] /grocery-lists - Sorting by: ${sortBy} in ${sortOrder} order`);
+
   // Validate the sortBy parameter
   const validSortFields = ['name', 'date_created', 'item_count'];
   if (!validSortFields.includes(sortBy)) {
@@ -35,6 +37,8 @@ function getGroceryList(req, res) {
   const includeChecked = req.query.include_checked !== 'false';
   const sortItemsBy = req.query.sort_items_by || 'position';
 
+  console.log(`[GET] /grocery-lists/${list_id} - Include checked: ${includeChecked}, Sorting items by: ${sortItemsBy}`);
+
   // Validate the sortItemsBy parameter
   const validItemSortFields = ['name', 'category', 'position'];
   if (!validItemSortFields.includes(sortItemsBy)) {
@@ -59,6 +63,8 @@ function addGroceryList(req, res) {
   const { name } = req.body;
   if (!name) return res.status(400).json({ error: 'Name is required' });
 
+  console.log(`[POST] /grocery-lists - Adding new list with name: ${name}`);
+
   const currentDate = getDate();
 
   const newList = {
@@ -78,6 +84,8 @@ function addGroceryList(req, res) {
 // DELETE /grocery-lists/<list_id>
 function deleteGroceryList(req, res) {
   const { list_id } = req.params;
+  console.log(`[DELETE] /grocery-lists/${list_id} - Deleting list`);
+
   const listIndex = groceryListsData.lists.findIndex((list) => list.id === list_id);
   if (listIndex === -1) return res.status(404).json({ error: 'List not found' });
 
@@ -93,6 +101,8 @@ function addItem(req, res) {
   const { name, quantity, category } = req.body;
 
   if (!name) return res.status(400).json({ error: 'Item name is required' });
+
+  console.log(`[POST] /grocery-lists/${list_id}/items - Adding item: ${name} (quantity: ${quantity}, category: ${category})`);
 
   const list = groceryListsData.lists.find((list) => list.id === list_id);
   if (!list) return res.status(404).json({ error: 'List not found' });
@@ -122,6 +132,8 @@ function addItem(req, res) {
 function updateItem(req, res) {
   const { list_id, item_id } = req.params;
   const updates = req.body;
+
+  console.log(`[PUT] /grocery-lists/${list_id}/items/${item_id} - Updating item with ID: ${item_id}`, updates);
 
   const list = groceryListsData.lists.find((list) => list.id === list_id);
   if (!list) return res.status(404).json({ error: 'List not found' });
@@ -161,6 +173,8 @@ function updateItem(req, res) {
 // DELETE /grocery-lists/<list_id>/items/<item_id>
 function deleteItem(req, res) {
   const { list_id, item_id } = req.params;
+
+  console.log(`[DELETE] /grocery-lists/${list_id}/items/${item_id} - Deleting item`);
 
   const list = groceryListsData.lists.find((list) => list.id === list_id);
   if (!list) return res.status(404).json({ error: 'List not found' });
