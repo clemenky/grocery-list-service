@@ -107,9 +107,9 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Endpoint:** `/grocery-lists`
   * **Description:** Creates a new grocery list.
   * **Request Body (JSON):**
-    ```json
+    ```text
     {
-      "name": "<name>"
+      "name": <name: string>
     }
     ```
   * **Example Call (using `fetch` in JavaScript):**
@@ -166,11 +166,11 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Path Parameter:**
       * `list_id`: The unique identifier of the grocery list.
   * **Request Body (JSON):**
-    ```json
+    ```text
     {
-      "name": "<name>",
-      "quantity": <quantity>,
-      "category": "<category>"
+      "name": <name: string>,
+      "quantity": <quantity: int>,
+      "category": <category: string>
     }
     ```
       * `quantity` and `category` are optional. `quantity` defaults to 1, and `category` defaults to an empty string.
@@ -206,13 +206,13 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
       * `list_id`: The unique identifier of the grocery list.
       * `item_id`: The unique identifier of the item to update.
   * **Request Body (JSON):** You can include any of the following fields to update:
-    ```json
+    ```text
     {
-      "name": "<name>",
-      "quantity": <quantity>,
-      "category": "<category>",
-      "position": <position>,
-      "checked": <boolean>
+      "name": <name: string>,
+      "quantity": <quantity: int>,
+      "category": <category: string>,
+      "position": <position: int>,
+      "checked": <checked: bool>
     }
     ```
       * All fields are optional.
