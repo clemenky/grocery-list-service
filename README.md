@@ -62,13 +62,13 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
       * `sort_items_by`: Specifies the field to sort the items within the list by. Allowed values: `position`, `name`, `category`. Default: `position`.
   * **Example Call (using `fetch` in JavaScript):**
     ```javascript
-    const listId = "your_list_id";
+    const listId = "<list_id>";
     fetch(`http://localhost:3000/grocery-lists/${listId}?include_checked=true&sort_items_by=category`);
     ```
   * **Example Response (JSON):**
     ```json
     {
-      "id": "your_list_id",
+      "id": "<list_id>",
       "name": "Weekend Shopping",
       "date_created": "2025-05-17T11:00:00.000Z",
       "date_updated": "2025-05-17T11:15:00.000Z",
@@ -109,7 +109,7 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Request Body (JSON):**
     ```json
     {
-      "name": "My New List"
+      "name": "<name>"
     }
     ```
   * **Example Call (using `fetch` in JavaScript):**
@@ -142,15 +142,15 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
       * `list_id`: The unique identifier of the grocery list to delete.
   * **Example Call (using `fetch` in JavaScript):**
     ```javascript
-    const listIdToDelete = "your_list_id_here";
-    fetch(`http://localhost:3000/grocery-lists/${listIdToDelete}`, {
+    const listId = "<list_id>";
+    fetch(`http://localhost:3000/grocery-lists/${listId}`, {
       method: 'DELETE',
     });
     ```
   * **Example Response (JSON):**
     ```json
     {
-      "id": "7bf1a180-8bf5-4667-a4e9-d123bf87160f",
+      "id": "<list_id>",
       "name": "Sunday Shopping",
       "date_created": "2025-05-17T19:56:41.069Z",
       "date_updated": "2025-05-17T19:56:41.069Z",
@@ -168,21 +168,21 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Request Body (JSON):**
     ```json
     {
-      "name": "Broccoli",
-      "quantity": 2,
-      "category": "Vegetables"
+      "name": "<name>",
+      "quantity": <quantity>,
+      "category": "<category>"
     }
     ```
       * `quantity` and `category` are optional. `quantity` defaults to 1, and `category` defaults to an empty string.
   * **Example Call (using `fetch` in JavaScript):**
     ```javascript
-    const listId = "your_list_id";
+    const listId = "<list_id>";
     fetch(`http://localhost:3000/grocery-lists/${listId}/items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: 'Bread', quantity: 1, category: 'Grains' }),
+      body: JSON.stringify({ name: 'Strawberries', quantity: 1, category: 'Fruit' }),
     });
     ```
   * **Example Response (JSON):**
@@ -208,20 +208,20 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Request Body (JSON):** You can include any of the following fields to update:
     ```json
     {
-      "name": "Broccoli",
-      "quantity": 3,
-      "category": "Vegetables",
-      "position": 1,
-      "checked": true
+      "name": "<name>",
+      "quantity": <quantity>,
+      "category": "<category>",
+      "position": <position>,
+      "checked": <boolean>
     }
     ```
       * All fields are optional.
       * Updating `position` will automatically reorder the other items in the list.
   * **Example Call (using `fetch` in JavaScript):**
     ```javascript
-    const listIdToUpdate = "your_list_id";
-    const itemIdToUpdate = "your_item_id";
-    fetch(`http://localhost:3000/grocery-lists/${listIdToUpdate}/items/${itemIdToUpdate}`, {
+    const listId = "<list_id>";
+    const itemId = "<item_id>";
+    fetch(`http://localhost:3000/grocery-lists/${listId}/items/${itemId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
   * **Example Response (JSON):**
     ```json
     {
-      "id": "072d3f25-4e7c-4cae-9658-55f2c3b66e97",
+      "id": "<item_id>",
       "name": "Cashews",
       "quantity": 2,
       "category": "Nuts",
@@ -251,16 +251,16 @@ To interact with the Grocery List Microservice, you will need to make HTTP reque
       * `item_id`: The unique identifier of the item to delete.
   * **Example Call (using `fetch` in JavaScript):**
     ```javascript
-    const listIdToDeleteFrom = "your_list_id";
-    const itemIdToDelete = "your_item_id";
-    fetch(`http://localhost:3000/grocery-lists/${listIdToDeleteFrom}/items/${itemIdToDelete}`, {
+    const listId = "<list_id>";
+    const itemId = "<item_id>";
+    fetch(`http://localhost:3000/grocery-lists/${listId}/items/${itemId}`, {
       method: 'DELETE',
     });
     ```
   * **Example Response (JSON):**
     ```json
     {
-      "id": "6f01601d-069d-496a-bcd6-9b41bdee71e5",
+      "id": "<item_id>",
       "name": "Quinoa",
       "quantity": 5,
       "category": "",
