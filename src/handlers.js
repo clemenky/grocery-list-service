@@ -10,6 +10,12 @@ function getGroceryLists(req, res) {
   const sortBy = req.query.sort_by || 'date_created';
   const sortOrder = req.query.sort_order || 'desc';
 
+  // Validate the sortBy parameter
+  const validSortFields = ['name', 'date_created', 'item_count'];
+  if (!validSortFields.includes(sortBy)) {
+    return res.status(400).json({ error: `Invalid sort_by parameter. Valid options are: ${validSortFields.join(', ')}` });
+  }
+
   const lists = groceryListsData.lists.map(list => ({
     id: list.id,
     name: list.name,
@@ -28,6 +34,12 @@ function getGroceryList(req, res) {
   const { list_id } = req.params;
   const includeChecked = req.query.include_checked !== 'false';
   const sortItemsBy = req.query.sort_items_by || 'position';
+
+  // Validate the sortItemsBy parameter
+  const validItemSortFields = ['name', 'category', 'position'];
+  if (!validItemSortFields.includes(sortItemsBy)) {
+    return res.status(400).json({ error: `Invalid sort_items_by parameter. Valid options are: ${validItemSortFields.join(', ')}` });
+  }
 
   const list = groceryListsData.lists.find((list) => list.id === list_id);
   if (!list) return res.status(404).json({ error: 'List not found' });
