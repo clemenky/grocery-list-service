@@ -8,7 +8,7 @@ import {
   addItem,
   updateItem,
   deleteItem
-} from './handlers.js';
+} from './src/handlers.js';
 
 
 const PORT = 3000;

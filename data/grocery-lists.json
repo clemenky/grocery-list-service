@@ -1,0 +1,20 @@
+{
+  "lists": [
+    {
+      "id": "f157e004-2986-4325-ba86-49103fcf1e9b",
+      "name": "Ethical Shopping List",
+      "date_created": "2025-05-18T00:46:51.347Z",
+      "date_updated": "2025-05-18T00:46:51.356Z",
+      "items": [
+        {
+          "id": "17c441fc-2bdd-455c-995d-21742ae7cb15",
+          "name": "Carrots",
+          "quantity": 99,
+          "category": "Vegetables",
+          "position": 1,
+          "checked": false
+        }
+      ]
+    }
+  ]
+}

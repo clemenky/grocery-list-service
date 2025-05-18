@@ -5,7 +5,7 @@ import fs from 'fs';
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_FILE = path.join(__dirname, 'grocery-lists.json');
+const DATA_FILE = path.join(__dirname, '..', 'data', 'grocery-lists.json');
 
 
 // Load data from JSON file on startup
